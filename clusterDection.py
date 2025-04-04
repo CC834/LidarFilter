@@ -6,7 +6,7 @@ from ydlidar_x2 import YDLidarX2
 from sklearn.cluster import DBSCAN
 
 
-from task1_module import *
+from lab3.YDLidarX2.kalmanFilter import *
 
 def main():
     lidar = YDLidarX2('/dev/ttyUSB0')  # Adjust your COM port as needed

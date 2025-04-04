@@ -90,6 +90,7 @@ def runScanCluster(lidar):
     except KeyboardInterrupt:
         pass
 
+
 #
 # Task 2: Record Datasets (omitted here for brevity)
 #
@@ -166,6 +167,7 @@ def runScanClusterKF(lidar):
                     points_np = np.array(points)
                     clustering = DBSCAN(eps=80, min_samples=5).fit(points_np)
                     labels = clustering.labels_
+                    
                     live_plot_clusters(points_np, labels, 1500, 1500, kalman_state=kf.X)
                     cluster_means = compute_cluster_means(points_np, labels)
                     if cluster_means:

@@ -4,18 +4,29 @@ import math
 import time
 from ydlidar_x2 import YDLidarX2
 from sklearn.cluster import DBSCAN
+from lab3_modules import lidarModules
 
-
-from task1_module import *
+#from lab3.YDLidarX2.kalmanFilter import *
 
 def main():
     lidar = YDLidarX2('/dev/ttyUSB0')  # Adjust your COM port as needed
     print("Connection status", lidar.connect())
     lidar.start_scan()
 
-    # Enable interactive plotting mode
+    # Create the lidar module with plotting/processing
+    lidarMode = lidarModules(lidar)
 
+    # Start scanning (this runs in a separate thread)
+    lidarMode.runScan()
 
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Stopping scan...")
+
+    # Stop scanning and disconnect
+    lidarMode.stopScan()  # Stop our scanning thread
     lidar.stop_scan()
     lidar.disconnect()
     print("Done")
