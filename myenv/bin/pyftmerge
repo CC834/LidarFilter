@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/ct/Desktop/Sensors and Measurement Systems, VT25, DT505A/Project/Lab1/Task3/myenv/bin/python3" "$0" "$@"
-' '''
+#!/home/ct/Desktop/Sensors/myenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
